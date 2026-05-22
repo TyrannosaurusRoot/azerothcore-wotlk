@@ -1,0 +1,26 @@
+[mod_boss_difficulty]
+
+##############################################################################
+# Boss Difficulty Module
+#
+# Changes take effect on server restart (or /reload config for AI-only toggle;
+# HP changes require a full restart because they apply at creature spawn time).
+#
+#    BossDifficulty.Maulgar.ReduceHP
+#        Reduce all five Maulgar encounter NPCs to 50% of their normal HP.
+#        0 - Disabled (vanilla HP)
+#        1 - Enabled  (50% HP)
+#        Default: 1
+#
+#    BossDifficulty.Maulgar.TankAndSpank
+#        Replace all Maulgar encounter abilities with melee-only combat.
+#        Covers: High King Maulgar, Krosh Firehand, Olm the Summoner,
+#                Kiggler the Crazed, Blindeye the Seer.
+#        0 - Disabled (original abilities)
+#        1 - Enabled  (melee only)
+#        Default: 1
+#
+##############################################################################
+
+BossDifficulty.Maulgar.ReduceHP = 1
+BossDifficulty.Maulgar.TankAndSpank = 1

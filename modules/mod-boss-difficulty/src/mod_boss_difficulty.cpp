@@ -13,6 +13,7 @@
  */
 
 #include "AllCreatureScript.h"
+#include "Config.h"
 #include "ScriptedCreature.h"
 
 // Constants mirrored from gruuls_lair.h / instance_gruuls_lair.cpp
@@ -148,6 +149,9 @@ public:
     // Fired after SelectLevel() sets MaxHealth/Health; halve them to 50%.
     void OnCreatureSelectLevel(const CreatureTemplate* /*cinfo*/, Creature* creature) override
     {
+        if (!sConfigMgr->GetOption<bool>("BossDifficulty.Maulgar.ReduceHP", true))
+            return;
+
         if (!IsMaulgarEncounterNPC(creature->GetEntry()))
             return;
 
@@ -161,6 +165,9 @@ public:
     // registered CreatureScript for every other creature.
     CreatureAI* GetCreatureAI(Creature* creature) const override
     {
+        if (!sConfigMgr->GetOption<bool>("BossDifficulty.Maulgar.TankAndSpank", true))
+            return nullptr;
+
         switch (creature->GetEntry())
         {
             case NPC_MAULGAR:
